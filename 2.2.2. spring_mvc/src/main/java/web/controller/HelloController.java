@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import web.dao.CarDao;
-import web.entity.Car;
+import web.model.Car;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +31,7 @@ public class HelloController {
 	@GetMapping(value = "/cars")
 	public String getCars(ModelMap model) {
 		List<Car> allCars = carDao.getAllCar();
+		model.addAttribute("allCars", allCars);
 		return "cars";
 	}
 }
