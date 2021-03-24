@@ -1,8 +1,22 @@
-package web.models;
+package web.entity;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="cars")
 public class Car {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+    @Column
     private String type;
+
+    @Column
     private String name;
+
+    @Column
     private String colors;
 
     public Car() {
@@ -12,6 +26,10 @@ public class Car {
         this.type = type;
         this.name = name;
         this.colors = colors;
+    }
+
+    public long getId() {
+        return id;
     }
 
     public String getType() {
@@ -41,7 +59,8 @@ public class Car {
     @Override
     public String toString() {
         return "Car{" +
-                "type='" + type + '\'' +
+                "id=" + id +
+                ", type='" + type + '\'' +
                 ", name='" + name + '\'' +
                 ", colors='" + colors + '\'' +
                 '}';
