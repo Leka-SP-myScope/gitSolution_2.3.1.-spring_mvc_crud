@@ -12,12 +12,6 @@ import java.util.List;
 @Controller
 public class HelloController {
 
-	private CarDao carDao;
-
-	public HelloController(CarDao carDao) {
-		this.carDao = carDao;
-	}
-
 	@GetMapping(value = "/")
 	public String printWelcome(ModelMap model) {
 		List<String> messages = new ArrayList<>();
@@ -26,12 +20,5 @@ public class HelloController {
 		messages.add("5.2.0 version by sep'19 ");
 		model.addAttribute("messages", messages);
 		return "index";
-	}
-
-	@GetMapping(value = "/cars")
-	public String getCars(ModelMap model) {
-		List<Car> allCars = carDao.getAllCar();
-		model.addAttribute("allCars", allCars);
-		return "cars";
 	}
 }
