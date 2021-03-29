@@ -10,15 +10,13 @@ import java.util.List;
 public class CarDaoImpl implements CarDao {
 
     @Override
-    public List<Car> getAllCar(int count) {
+    public List<Car> getCarByCount(int count) {
         List<Car> cars = new ArrayList<>();
         cars.add(new Car("BMW", "Car is very good", "Black"));
         cars.add(new Car("AUDI", "Car is not bad at all", "White"));
         cars.add(new Car("RENAULT", "Car is not bad", "Grey"));
         cars.add(new Car("MAZDA", "Car is good", "Red"));
         cars.add(new Car("ZAPOROZHEC", "Car is epic", "Yellow"));
-
-        //cars.stream().filter(x ->.size() >= count).collect(Collectors.toList()).subList(0, count - 1);
 
         if (count < cars.size()) {
             return cars.subList(0, count);
