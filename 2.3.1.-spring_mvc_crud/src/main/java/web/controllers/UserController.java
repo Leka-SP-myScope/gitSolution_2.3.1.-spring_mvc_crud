@@ -1,4 +1,4 @@
-package web.controllers;
+package java.web.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,6 +8,6 @@ public class UserController {
 
     @GetMapping()
     public String getAllUser() {
-        return "users";
+        return "user2";
     }
 }

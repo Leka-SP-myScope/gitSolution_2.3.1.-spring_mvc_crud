@@ -1,7 +1,7 @@
-package web.dao;
+package java.web.dao;
 
 import org.springframework.stereotype.Repository;
-import web.model.User;
+import java.web.model.User;
 
 import java.util.List;
 
