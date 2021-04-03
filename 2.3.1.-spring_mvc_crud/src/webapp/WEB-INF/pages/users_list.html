@@ -5,22 +5,29 @@
     <title>User_list</title>
 </head>
 <body>
-<div>
-    <table border="1">
-        <tr>
-            <th>Name</th>
-            <th>Surname</th>
-            <th>Age</th>
-        </tr>
-        <br/>
-        <th:block th:each="message : ${allUser}">
-            <tr>
-                <td th:text="${message.getName()}"></td>
-                <td th:text="${message.getSurname()}"></td>
-                <td th:text="${message.getAge()}"></td>
+<div th:switch="${allUser}">
+    <h2 th:case="null">No users found!</h2>
+    <div th:case="*">
+        <h2>Users</h2>
+        <table border="1">
+            <thead><tr>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Age</th>
             </tr>
-        </th:block>
-    </table>
+            </thead>
+            <br/>
+            <tbody><<tr th:each="message : ${allUser}">
+                <td th:text="${message.name}"></td>
+                <td th:text="${message.surname}"></td>
+                <td th:text="${message.age}"></td>
+                <td><a th:href="@{user_update/{id}(id=${message.id})}">Edit</a></td>
+                <td><a th:href="@{user_delete/{id}(id=${message.id})}">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a href="/user_create">Create user</a></p>
 </div>
 </body>
 </html>
