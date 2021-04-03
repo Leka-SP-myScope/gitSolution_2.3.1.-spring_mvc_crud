@@ -19,7 +19,7 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
-@PropertySource(value = {"classpath:db.properties"})
+@PropertySource(value = {"classpath:resources/db.properties"})
 @EnableTransactionManagement
 public class RepositoryConfig {
 
@@ -31,11 +31,15 @@ public class RepositoryConfig {
         LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
         emf.setDataSource(dataSource());
         emf.setPackagesToScan("web.model");
-
-        JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-        emf.setJpaVendorAdapter(vendorAdapter);
+        emf.setJpaVendorAdapter(jpaVendorAdapter());
         emf.setJpaProperties(additionalProperties());
         return emf;
+    }
+
+    @Bean
+    public JpaVendorAdapter jpaVendorAdapter() {
+        HibernateJpaVendorAdapter hibernateJpaVendorAdapter = new HibernateJpaVendorAdapter();
+        return hibernateJpaVendorAdapter;
     }
 
     @Bean
