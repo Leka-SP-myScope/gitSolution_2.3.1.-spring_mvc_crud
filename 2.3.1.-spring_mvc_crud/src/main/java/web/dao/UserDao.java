@@ -1,8 +1,7 @@
-package java.web.dao;
+package web.dao;
 
-import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.web.model.User;
+import web.model.User;
 
 import java.util.List;
 

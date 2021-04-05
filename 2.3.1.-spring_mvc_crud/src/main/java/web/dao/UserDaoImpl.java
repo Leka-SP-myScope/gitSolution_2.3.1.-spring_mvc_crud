@@ -1,12 +1,13 @@
-package java.web.dao;
+package web.dao;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import web.model.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
-import java.web.model.User;
+
 
 @Repository
 public class UserDaoImpl implements UserDao {
@@ -34,6 +35,4 @@ public class UserDaoImpl implements UserDao {
     public void deleteById(Long id) {
 
     }
-
-
 }

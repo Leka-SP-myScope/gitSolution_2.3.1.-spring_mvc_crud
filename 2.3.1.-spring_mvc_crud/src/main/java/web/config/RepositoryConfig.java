@@ -1,4 +1,4 @@
-package java.web.config;
+package web.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -19,7 +19,7 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
-@PropertySource(value = {"classpath:resources/db.properties"})
+@PropertySource(value = {"classpath:db.properties"})
 @EnableTransactionManagement
 public class RepositoryConfig {
 
