@@ -51,4 +51,16 @@ public class UserController {
         return "redirect:/users";
     }
 
+    @GetMapping("/user_update/{id}")
+    public String saveUserAndShow(@PathVariable("id") Long id, Model model) {
+        User user = userDao.findById(id);
+        model.addAttribute("user", user);
+        return "user_update";
+    }
+
+    @PostMapping("/user_update")
+    public String saveUser(User user) {
+        userDao.saveUser(user);
+        return "redirect:/users";
+    }
 }
