@@ -35,20 +35,20 @@ public class UserController {
     }
 
     @GetMapping("/user_create")
-    public String createUserAndShow() {
+    public String createUserAndShow(User user) {
         return "user_create";
     }
 
     @PostMapping("/user_create")
     public String createUser(User user) {
         userDao.saveUser(user);
-        return "redirect:/users_list";
+        return "redirect:/users";
     }
 
     @GetMapping("/user_delete/{id}")
     public String deleteUser(@PathVariable("id") Long id) {
         userDao.deleteById(id);
-        return "redirect:/users_list";
+        return "redirect:/users";
     }
 
 }
