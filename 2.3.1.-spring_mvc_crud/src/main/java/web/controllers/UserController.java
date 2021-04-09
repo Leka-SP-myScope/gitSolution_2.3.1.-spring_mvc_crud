@@ -6,7 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import web.dao.UserDao;
 import web.model.User;
 import web.service.UserService;
 
@@ -15,13 +14,6 @@ import java.util.List;
 
 @Controller
 public class UserController {
-
-//    private final UserDao userDao;
-//
-//    @Autowired
-//    public UserController(UserDao userDao) {
-//        this.userDao = userDao;
-//    }
 
     private final UserService userService;
 
