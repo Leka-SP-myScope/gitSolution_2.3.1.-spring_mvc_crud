@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import web.dao.UserDao;
 import web.model.User;
+import web.service.UserService;
 
 import java.util.List;
 
@@ -15,11 +16,18 @@ import java.util.List;
 @Controller
 public class UserController {
 
-    private final UserDao userDao;
+//    private final UserDao userDao;
+//
+//    @Autowired
+//    public UserController(UserDao userDao) {
+//        this.userDao = userDao;
+//    }
+
+    private final UserService userService;
 
     @Autowired
-    public UserController(UserDao userDao) {
-        this.userDao = userDao;
+    public UserController(UserService userService) {
+        this.userService = userService;
     }
 
     @GetMapping
@@ -29,7 +37,7 @@ public class UserController {
 
     @GetMapping("/users")
     public String getAllUser(Model model) {
-        List<User> allUser = userDao.getAllUser();
+        List<User> allUser = userService.getAllUser();
         model.addAttribute("allUser", allUser);
         return "users_list";
     }
@@ -41,26 +49,26 @@ public class UserController {
 
     @PostMapping("/user_create")
     public String createUser(User user) {
-        userDao.saveUser(user);
+        userService.saveUser(user);
         return "redirect:/users";
     }
 
     @GetMapping("/user_delete/{id}")
     public String deleteUser(@PathVariable("id") Long id) {
-        userDao.deleteById(id);
+        userService.deleteById(id);
         return "redirect:/users";
     }
 
     @GetMapping("/user_update/{id}")
     public String saveUserAndShow(@PathVariable("id") Long id, Model model) {
-        User user = userDao.findById(id);
+        User user = userService.findById(id);
         model.addAttribute("user", user);
         return "user_update";
     }
 
     @PostMapping("/user_update")
     public String saveUser(User user) {
-        userDao.saveUser(user);
+        userService.updateUser(user);
         return "redirect:/users";
     }
 }

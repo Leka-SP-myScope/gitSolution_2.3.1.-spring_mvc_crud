@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import web.dao.UserDao;
 import web.model.User;
-import web.repository.UserRepository;
 
 import java.util.List;
 
@@ -32,7 +31,7 @@ public class UserServiceImpl implements UserService {
 //    }
 
     @Override
-    public List<User> getAll() {
+    public List<User> getAllUser() {
         return userDao.getAllUser();
     }
 
@@ -54,6 +53,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public void saveUser(User user) {
         userDao.saveUser(user);
+    }
+
+    @Override
+    public void updateUser(User user) {
+        userDao.updateUser(user);
     }
 
 //    @Override
