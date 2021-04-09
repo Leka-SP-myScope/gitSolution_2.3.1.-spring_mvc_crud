@@ -11,7 +11,6 @@ import web.service.UserService;
 
 import java.util.List;
 
-
 @Controller
 public class UserController {
 
