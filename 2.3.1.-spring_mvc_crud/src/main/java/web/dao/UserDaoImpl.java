@@ -10,20 +10,18 @@ import javax.persistence.TypedQuery;
 import java.util.List;
 
 
-@Component
+@Transactional
 public class UserDaoImpl implements UserDao {
 
     @PersistenceContext
     private EntityManager entityManager;
 
     @Override
-    @Transactional
     public List<User> getAllUser() {
         return entityManager.createQuery("select u from User u", User.class).getResultList();
     }
 
     @Override
-    @Transactional
     public User findById(Long id) {
         TypedQuery<User> query = entityManager.createQuery(
                 "select u from User u where u.id = :id", User.class);
@@ -32,19 +30,16 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    @Transactional
     public void saveUser(User user) {
         entityManager.persist(user);
     }
 
     @Override
-    @Transactional
     public void updateUser(User user) {
         entityManager.merge(user);
     }
 
     @Override
-    @Transactional
     public void deleteById(Long id) {
         TypedQuery<User> query = entityManager.createQuery(
                 "select u from User u where u.id = :id", User.class);
